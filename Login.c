@@ -4,8 +4,8 @@
 #include <ctype.h>      // Librería para funciones de caracteres (isalpha, isalnum)
 
 // Definición de límites máximos para usuario y contraseña
-#define MAX_USUARIO 30
-#define MAX_CONTRASENA 30
+#define MAX_USUARIO 1000
+#define MAX_CONTRASENA 1000
 
 // Declaración de funciones utilizadas
 int registrarUsuario();
