@@ -72,6 +72,7 @@ void menuPrincipal() {
             // Registrar un nuevo vehículo
 			if (cantidadVehiculos < MAX_VEHICULOS) {
 				validarMatricula(&vehiculos[cantidadVehiculos]); // Llama a función para llenar los datos del vehículo
+				strcpy(vehiculos[cantidadVehiculos].usuario, usuarioActual);
 				cantidadVehiculos++; // Incrementa el contador de vehículos
 				guardarVehiculos(vehiculos, cantidadVehiculos);
 			} else {
