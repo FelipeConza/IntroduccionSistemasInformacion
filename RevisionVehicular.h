@@ -12,6 +12,7 @@
 
 // Estructura que representa un vehículo
 typedef struct {
+    char usuario[30];
     char placa[8];                    // Placa del vehículo (3 letras + 4 números)
     char cedula[11];                  // Cédula del propietario
     char anio[5];                     // Año del vehículo
@@ -35,6 +36,10 @@ float calcular_matricula_vehicular(
     int mes_pago, 
     int ultimo_digito_placa
 );
+
+// Funciones para cargar y guardar vehiculos
+void guardarVehiculos(const Vehiculo vehiculos[], int cantidad);
+void cargarVehiculos(Vehiculo vehiculos[], int *cantidad);
 
 // Funciones relacionadas con revisiones técnicas
 void registrarRevisiones(int revisiones[NUM_REVISIONES]);
