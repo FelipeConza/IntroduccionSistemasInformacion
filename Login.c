@@ -3,6 +3,8 @@
 #include <string.h>     // Librería para manipulación de cadenas (strlen, strcmp, etc.)
 #include <ctype.h>      // Librería para funciones de caracteres (isalpha, isalnum)
 
+extern char usuarioActual[30];
+
 // Definición de límites máximos para usuario y contraseña
 #define MAX_USUARIO 1000
 #define MAX_CONTRASENA 1000
@@ -126,6 +128,7 @@ int iniciarSesion() {
     while (fgets(linea, sizeof(linea), f)) {
         sscanf(linea, "%[^,],%s", archivoUsuario, archivoContrasena); // Separar usuario y contraseña
         if (strcmp(usuario, archivoUsuario) == 0 && strcmp(contrasena, archivoContrasena) == 0) {
+            strcpy(usuarioActual, usuario);
             fclose(f);
             return 1; // Login exitoso
         }
