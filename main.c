@@ -15,7 +15,12 @@ int cantidadVehiculos = 0;
 void menuPrincipal();
 void mostrarVehiculo(const Vehiculo v);
 
+//Esto hace que cada vehículo pertenezca a un usuario
+char usuarioActual[30];
+
 int main() {
+	cargarVehiculos(vehiculos, &cantidadVehiculos);
+	
     // Bucle infinito para que el programa siga corriendo hasta que se salga explícitamente
 	while (1) {
         // Si el login es exitoso, se llama al menú principal
@@ -68,6 +73,7 @@ void menuPrincipal() {
 			if (cantidadVehiculos < MAX_VEHICULOS) {
 				validarMatricula(&vehiculos[cantidadVehiculos]); // Llama a función para llenar los datos del vehículo
 				cantidadVehiculos++; // Incrementa el contador de vehículos
+				guardarVehiculos(vehiculos, cantidadVehiculos);
 			} else {
 				printf("No se puede registrar mas vehiculos.\n");
 			}
