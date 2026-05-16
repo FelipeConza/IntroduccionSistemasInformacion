@@ -319,3 +319,77 @@ float calcular_matricula_vehicular(const char tipo_vehiculo[], int cilindraje, i
 
     return total;
 }
+
+// ============================================================
+// GUARDAR VEHICULOS EN ARCHIVO
+// ============================================================
+
+void guardarVehiculos(const Vehiculo vehiculos[], int cantidad) {
+
+    FILE *f = fopen("vehiculos.txt", "w");
+
+    if (f == NULL) {
+        printf("Error al guardar vehiculos.\n");
+        return;
+    }
+
+    for (int i = 0; i < cantidad; i++) {
+
+        fprintf(f,
+            "%s,%s,%s,%s,%s,%s,%d,%d,%d\n",
+
+            vehiculos[i].usuario,
+            vehiculos[i].placa,
+            vehiculos[i].cedula,
+            vehiculos[i].anio,
+            vehiculos[i].tipo,
+            vehiculos[i].avaluo,
+
+            vehiculos[i].revisiones[0],
+            vehiculos[i].revisiones[1],
+            vehiculos[i].revisiones[2]
+        );
+    }
+
+    fclose(f);
+}
+
+// ============================================================
+// CARGAR VEHICULOS DESDE ARCHIVO
+// ============================================================
+
+void cargarVehiculos(Vehiculo vehiculos[], int *cantidad) {
+
+    FILE *f = fopen("vehiculos.txt", "r");
+
+    if (f == NULL) {
+        return;
+    }
+
+    *cantidad = 0;
+
+    while (fscanf(f,
+        "%29[^,],%7[^,],%10[^,],%4[^,],%19[^,],%9[^,],%d,%d,%d\n",
+
+        vehiculos[*cantidad].usuario,
+        vehiculos[*cantidad].placa,
+        vehiculos[*cantidad].cedula,
+        vehiculos[*cantidad].anio,
+        vehiculos[*cantidad].tipo,
+        vehiculos[*cantidad].avaluo,
+
+        &vehiculos[*cantidad].revisiones[0],
+        &vehiculos[*cantidad].revisiones[1],
+        &vehiculos[*cantidad].revisiones[2]
+
+    ) == 9) {
+
+        (*cantidad)++;
+
+        if (*cantidad >= MAX_VEHICULOS) {
+            break;
+        }
+    }
+
+    fclose(f);
+}
