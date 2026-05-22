@@ -1,9 +1,0 @@
-====== COMPROBANTE DE REGISTRO VEHICULAR ======
-Placa: ABC1234
-Cedula: 1234567891
-Anio: 2012
-Tipo: pesado
-Avaluo: 20000
-=============================================
-Gracias por registrar su vehiculo. Este comprobante
-constituye constancia oficial de inscripcion.
